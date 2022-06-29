@@ -26,7 +26,7 @@ jobs:
    # Run api governance validation meetup-best-practices-1.0.0-ruleset-1 over HelloWorl API.
        - run: |
             cd ci-cd-meetup-live-api-validation-example
-            zip  -b ./hello-meetup/src/main/resources/api/api.zip ./hello-meetup/src/main/resources/api/api.raml
+            zip  -b ./hello-meetup/src/main/resources/api  ./hello-meetup/src/main/resources/api/api.raml
             anypoint-cli governance api validate ./RULESETS/meetup-best-practices-1.0.0-ruleset-1/meetup_custom_ruleset_1.yaml ./hello-meetup/src/main/resources/api/api.zip > resultado_revision_api_spec.txt
             encontrado=$(cat resultado_revision_api_spec.txt | grep -i "Spec does not conform with Ruleset")
             echo $encontrado
