@@ -27,12 +27,13 @@ jobs:
        - run: |
             cd ci-cd-meetup-live-api-validation-example
             zip  -b ./hello-meetup/src/main/resources/api api.zip ./hello-meetup/src/main/resources/api/api.raml
-            anypoint-cli governance api validate ../RULESETS/meetup-best-practices-1.0.0-ruleset-1/meetup_custom_ruleset_1.yaml api.zip 
+            anypoint-cli governance api validate ../RULESETS/meetup-best-practices-1.0.0-ruleset-1/meetup_custom_ruleset_1.yaml api.zip > resultado_revision_api_spec.txt
             encontrado=$(cat resultado_revision_api_spec.txt | grep -i "Spec does not conform with Ruleset")
             echo $encontrado
             encontrado=$(cat resultado_revision_api_spec.txt | grep -i "Spec conform with Ruleset")
             echo $encontrado
             rm api.zip
+            rm resultado_revision_api_spec.txt
          env:
             ANYPOINT_USERNAME: ${{ secrets.ANYPOINT_USERNAME }}
             ANYPOINT_PASSWORD: ${{ secrets.ANYPOINT_PASSWORD }}
