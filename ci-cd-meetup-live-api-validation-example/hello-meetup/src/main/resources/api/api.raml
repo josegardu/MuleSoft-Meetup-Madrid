@@ -1,0 +1,43 @@
+#%RAML 1.0
+title: hello-meetup API
+mediaType:
+  - application/json
+version: v1
+protocols:
+  - HTTP
+types:
+  AccountID:
+    example: acct567
+    type: string
+    pattern: acct\d+
+  Order:
+    properties:
+      order-id:
+        example: ord123456
+        type: string
+        pattern: ord\d+
+      account-id:
+        type: AccountID
+      total-price?:
+        example: 3141.59
+        type: number
+        format: float
+/orders:
+  get:
+    description: Retrieve or search the list of orders
+    queryParameters:
+      account-id?:
+        type: AccountID
+    responses:
+      "200":
+        description: Happy path retrieve
+        body:
+          items:
+            type: Order
+      "500":
+        description: A server side error
+        body:
+          properties:
+            message:
+              example: Unexpected internal error occurred
+              type: string
