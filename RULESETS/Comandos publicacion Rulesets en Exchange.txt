@@ -1,0 +1,16 @@
+export ANYPOINT_PROFILE="Meetup Madrid"
+
+anypoint-cli governance ruleset validate ./meetup_custom_ruleset_2.yaml
+
+anypoint-cli governance document ./meetup_custom_ruleset_2.yaml  
+./meetup_custom_ruleset_2.doc.zip
+
+zip -u -b . meetup_custom_ruleset_2.zip ./meetup_custom_ruleset_2.yaml
+
+anypoint-cli exchange asset uploadv2 --name ‘Meetup Custom rulesets 2’ 
+--description ‘Meetup Custom rulesets Publics APIs’ --properties.mainFile 
+meetup_custom_ruleset_2.yaml --files.ruleset.zip 
+./meetup_custom_ruleset_2.zip 
+9a8fb867-3710-41b1-8fed-bb6dd20a794b/meetup-custom-ruleset-2-asset/1.0.0 
+--files.docs.zip ./meetup_custom_ruleset_2.doc.zip
+

@@ -1,0 +1,29 @@
+#%Validation Profile 1.0
+
+profile: Meetup live rulesets
+
+description: |
+  This ruleset helps ensure the use of HTTPS across URLs in API definitions, both in the base server URL and in any callbacks optionally defined.
+
+tags:
+  - security
+
+violation:
+  - use-https-for-urls
+  - use-https-for-callbacks
+
+validations:
+
+  use-https-for-urls:
+    message: Always use https for URLs
+    targetClass: apiContract.Server
+    propertyConstraints:
+      core.urlTemplate:
+        pattern: "^https://"
+  
+  use-https-for-callbacks:
+    message: Always use https for callbacks
+    targetClass: apiContract.Callback
+    propertyConstraints:
+      apiContract.expression:
+        pattern: "^https://"
