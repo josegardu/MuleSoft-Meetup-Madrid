@@ -1,6 +1,0 @@
-Ruleset ../RULESETS/meetup-best-practices-1.0.0-ruleset-1/meetup_custom_ruleset_1.zip
-Spec api.zip
-TypeError: Cannot read properties of null (reading 'async')
-    at /usr/local/lib/node_modules/anypoint-cli/src/commands/governance/development.js:137:41
-    at processTicksAndRejections (node:internal/process/task_queues:96:5)
-    at async Promise.all (index 1)
